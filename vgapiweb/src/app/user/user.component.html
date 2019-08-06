@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <hr/>
+  <h1>{{title}}</h1>
+  <hr/>
+
+  <div class="alert alert-success" *ngIf="idUserEdit == 1">
+    Tu perfil se ha actualizado correctamente
+    <a [routerLink]="['/login']"></a>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="idUserEdit == 0">
+    No ha sido posible actualizar tu informacion en la plataforma.
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="col-md-4">
+    <p>
+      <label>Nombre:</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" required/>
+      <span>El nombre es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Apellidos:</label>
+      <input type="text" class="form-control" name="surname" [(ngModel)]="user.surname" required/>
+      <span>Los apellidos son obligatorios</span>
+    </p>
+
+    <p>
+      <label>Email:</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="user.email" disabled/>
+      <span>El email es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Contraseña:</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required/>
+      <span>La contraseña es obligatoria</span>
+    </p>
+
+    <input type="submit" value="Update" class="btn btn-success"/>
+  </form>
+</div>

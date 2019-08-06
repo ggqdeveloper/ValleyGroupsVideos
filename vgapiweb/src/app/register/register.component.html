@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <hr/>
+  <h1>{{title}}</h1>
+  <hr/>
+
+  <div class="alert alert-success" *ngIf="idRegister == 1">
+    Te has registrado correctamente, ahora puedes identificarte
+    <a [routerLink]="['/login']">pinchando aqui...</a>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="idRegister == 0">
+    No ha sido posible registrarte en la plataforma, intentalo más tarde.
+  </div>
+
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
+    <p>
+      <label>Nombre:</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" required/>
+      <span>El nombre es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Apellidos:</label>
+      <input type="text" class="form-control" name="surname" [(ngModel)]="user.surname" required/>
+      <span>Los apellidos son obligatorios</span>
+    </p>
+
+    <p>
+      <label>Email:</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required/>
+      <span>El email es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Contraseña:</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required/>
+      <span>La contraseña es obligatoria</span>
+    </p>
+
+    <input type="submit" value="Registrarse" class="btn btn-success"/>
+  </form>
+</div>

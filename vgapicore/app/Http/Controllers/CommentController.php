@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Helpers\JwtAuth;
+    use App\Video;
     use Illuminate\Http\Request;
     use App\Comment;
 
@@ -10,6 +11,8 @@
     {
         public function index(Request $request)
         {
+            $comments = Comment::all();
+
             $hash = $request->header('Authorization', null);
             $jwtAuth = new JwtAuth();
 
@@ -17,12 +20,14 @@
 
             if ($checkToken) {
                 $data = array(
+                    'data' => $comments,
                     'status' => 'success',
                     'code' => 200,
                     'message' => 'Usuario autenticado'
                 );
             } else {
                 $data = array(
+                    'data' => $comments,
                     'status' => 'error',
                     'code' => 400,
                     'message' => 'Usuario no autenticado'

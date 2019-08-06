@@ -10,6 +10,11 @@
 
         public function user()
         {
-            return $this->belongsTo('App\User', 'user_id');
+            return $this->belongsTo(User::class);
+        }
+
+        public function video()
+        {
+            return $this->belongsTo(Video::class);
         }
     }

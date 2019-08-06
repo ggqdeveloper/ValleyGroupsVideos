@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <hr/>
+  <h1>{{title}}</h1>
+  <hr/>
+
+  <div class="alert alert-success" *ngIf="idLogin == 1">
+    Haz ingresado correctamente.
+  </div>
+
+  <div class="alert alert-danger" *ngIf="idLogin == 0">
+    Error al ingresar, por favor confirma tu correo o usuario.
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="col-md-4">
+    <p>
+      <label>Correo electrónico:</label>
+      <input type="email" class="form-control" ngControl="email" [(ngModel)]="user.email"
+             [ngModelOptions]="{standalone: true}" required/>
+      <span>El email es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Contraseña:</label>
+      <input type="password" class="form-control" ngControl="password" [(ngModel)]="user.password"
+             [ngModelOptions]="{standalone: true}" required/>
+      <span>La contraseña es obligatoria</span>
+    </p>
+
+    <input type="submit" value="Entrar" class="btn btn-danger"/>
+  </form>
+</div>

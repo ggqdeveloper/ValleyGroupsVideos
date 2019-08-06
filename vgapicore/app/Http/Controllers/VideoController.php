@@ -11,6 +11,12 @@
     {
         public function index(Request $request)
         {
+            $videos = Video::all();
+
+            foreach ($videos as $video) {
+                $video->user->id;
+            }
+
             $hash = $request->header('Authorization', null);
             $jwtAuth = new JwtAuth();
 
@@ -18,12 +24,14 @@
 
             if ($checkToken) {
                 $data = array(
+                    'data' => $videos,
                     'status' => 'success',
                     'code' => 200,
                     'message' => 'Usuario autenticado'
                 );
             } else {
                 $data = array(
+                    'data' => $videos,
                     'status' => 'error',
                     'code' => 400,
                     'message' => 'Usuario no autenticado'
@@ -31,6 +39,11 @@
             }
 
             return response()->json($data, 200);
+        }
+
+        public function getDateFormat()
+        {
+            return 'Y-m-d H:i:s.u';
         }
 
         public function store(Request $request)

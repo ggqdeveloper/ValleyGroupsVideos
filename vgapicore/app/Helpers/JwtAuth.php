@@ -44,11 +44,7 @@
                     return $decode;
                 }
             } else {
-                $data = array(
-                    'status' => 'error',
-                    'code' => 400,
-                    'message' => 'Login ha fallado!!'
-                );
+                $data = 400;
 
                 return response()->json($data, 200);
             }

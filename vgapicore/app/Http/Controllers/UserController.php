@@ -90,4 +90,41 @@
 
             return response()->json($signup, 200);
         }
+
+        public function edit(Request $request)
+        {
+            $json = $request->input('json', null);
+            $params = json_decode($json);
+
+            $email = (!is_null($json) && isset($params->email)) ? $params->email : null;
+            $name = (!is_null($json) && isset($params->name)) ? $params->name : null;
+            $surname = (!is_null($json) && isset($params->surname)) ? $params->surname : null;
+            $password = (!is_null($json) && isset($params->password)) ? $params->password : null;
+
+            if (!is_null($email) && !is_null($name) && !is_null($password)) {
+                $user = User::where('email', '=', $email)->first();
+                $user->name = $name;
+                $user->surname = $surname;
+                $user->password = $password;
+
+                $pwd = hash('sha256', $password);
+                $user->password = $pwd;
+
+                $user->save();
+
+                $data = array(
+                    'status' => 'success',
+                    'code' => 200,
+                    'message' => 'Usuario actualizado correctamente'
+                );
+            } else {
+                $data = array(
+                    'status' => 'error',
+                    'code' => 400,
+                    'message' => 'Usuario no actualizado'
+                );
+            }
+
+            return response()->json($data, 200);
+        }
     }

@@ -16,6 +16,7 @@
     });
 
     Route::post('/api/register', 'UserController@register');
+    Route::post('/api/user/edit', 'UserController@edit');
     Route::post('/api/login', 'UserController@login');
     Route::resource('/api/videos', 'VideoController');
     Route::resource('/api/comments', 'CommentController');
