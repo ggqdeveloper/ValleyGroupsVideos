@@ -5,6 +5,12 @@
 
 It is recommended that you use Composer to install the libraries.
 
+## Configuration
+
+Php version > 7.1.3
+Angular version > 8.2
+Postgres version > 10.0
+
 ## Installation
 
 #### Php
@@ -12,3 +18,7 @@ It is recommended that you use Composer to install the libraries.
 
 #### Angular
 > npm update
+
+In development perform the angular start with the sentence
+
+> ng serve
