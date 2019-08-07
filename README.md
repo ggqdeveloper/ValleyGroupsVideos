@@ -3,11 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/ggqdeveloper/ds365?style=flat-square)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/laravel/laravel?style=flat-square)
 
-##Installation
-
 It is recommended that you use Composer to install the libraries.
-
-
 
 ## Installation
 
