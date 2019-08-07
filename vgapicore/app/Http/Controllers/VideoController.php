@@ -2,10 +2,10 @@
 
     namespace App\Http\Controllers;
 
+    use App\User;
     use Illuminate\Http\Request;
     use App\Helpers\JwtAuth;
     use App\Video;
-    use Illuminate\Validation\ValidationException;
 
     class VideoController extends Controller
     {
@@ -14,7 +14,7 @@
             $videos = Video::all();
 
             foreach ($videos as $video) {
-                $video->user->id;
+                $video->user;
             }
 
             $hash = $request->header('Authorization', null);
@@ -48,30 +48,33 @@
 
         public function store(Request $request)
         {
-            $hash = $request->header('Authorization', null);
+            $hash = $request->input('authorization', null);
             $jwtAuth = new JwtAuth();
 
-            $checkToken = $jwtAuth->checkToken($hash);
+            $checkToken = $jwtAuth->checkToken($hash, false);
 
             if ($checkToken) {
+
                 $json = $request->input('json', null);
                 $params = json_decode($json);
 
                 $user = $jwtAuth->checkToken($hash, true);
 
+                $isset_user = User::where('id', '=', $user->sub)->first();
+
                 if (isset($params->title) && isset($params->description)) {
                     $video = new Video();
-                    $video->user_id = $user->sub;
+                    $video->user_id = $isset_user->id;
                     $video->title = $params->title;
                     $video->description = $params->description;
-                    $video->image = isset($params->email) ? $params->image : null;
-                    $video->path = isset($params->email) ? $params->path : null;
+                    $video->image = isset($params->image) ? $params->image : null;
+                    $video->path = isset($params->path) ? $params->path : null;
                     $video->status = 'ACTIVO';
 
                     $video->save();
 
                     $data = array(
-                        'video' => $video,
+                        'data' => $video,
                         'status' => 'success',
                         'code' => 200,
                         'message' => 'Video creado'

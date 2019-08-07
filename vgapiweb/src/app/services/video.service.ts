@@ -20,4 +20,12 @@ export class VideoService {
     return this._http.get(this.url + "api/videos");
   }
 
+  videoCreated(token, video): Observable<any> {
+    let json = JSON.stringify(video);
+    let params = "json=" + json + "&authorization=" + token;
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.post(this.url + "api/videos", params, {headers});
+  }
+
 }

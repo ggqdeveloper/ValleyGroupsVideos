@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <hr/>
+  <h1>{{title}}</h1>
+  <hr/>
+
+  <div class="alert alert-success" *ngIf="idVideoCreated == 1">
+    Se ha creado el video correctamente
+    <a [routerLink]="['/login']"></a>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="idVideoCreated == 0">
+    No ha sido posible crear tu video en la plataforma.
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="col-md-4">
+    <p>
+      <label>Titulo:</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="video1.title" required/>
+      <span>El titulo es obligatorio</span>
+    </p>
+
+    <p>
+      <label>Descripcion:</label>
+      <input type="text" class="form-control" name="description" [(ngModel)]="video1.description"/>
+    </p>
+
+    <input type="submit" value="Crear" class="btn btn-success"/>
+  </form>
+</div>

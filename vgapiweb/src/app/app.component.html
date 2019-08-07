@@ -5,10 +5,14 @@
         <a class="navbar-brand" [routerLink]="['/default']">
           <img src="../assets/images/logo.png" height="50" style="margin-top: -15px;"/>
         </a>
-
         <ul *ngIf="identity" class="nav navbar-nav navbar-right">
           <li><a [routerLink]="['/login', 1]">
-            <span class="fas fa-sign-out-alt" aria-hidden="true"></span> Salir
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir
+          </a></li>
+        </ul>
+        <ul *ngIf="identity" class="nav navbar-nav navbar-right">
+          <li><a [routerLink]="['/video']">
+            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Crear video
           </a></li>
         </ul>
         <ul *ngIf="identity" class="nav navbar-nav navbar-right">

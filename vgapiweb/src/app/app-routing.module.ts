@@ -4,6 +4,7 @@ import {LoginComponent} from "./login/login.component";
 import {DefaultComponent} from "./default/default.component";
 import {RegisterComponent} from "./register/register.component";
 import {UserComponent} from "./user/user.component";
+import {VideoComponent} from "./video/video.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'login/:id', component: LoginComponent},
   {path: 'user', component: UserComponent},
+  {path: 'video', component: VideoComponent},
 ];
 
 @NgModule({

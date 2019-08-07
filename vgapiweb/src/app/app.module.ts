@@ -10,6 +10,7 @@ import {AlertModule, BsDropdownModule, ButtonsModule} from "ngx-bootstrap"
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {UserComponent} from './user/user.component';
+import {VideoComponent} from './video/video.component';
 
 
 
@@ -19,7 +20,8 @@ import {UserComponent} from './user/user.component';
     LoginComponent,
     DefaultComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

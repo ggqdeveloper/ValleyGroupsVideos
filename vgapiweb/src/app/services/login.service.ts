@@ -14,7 +14,7 @@ export class LoginService {
     this.url = GLOBAL.url;
   }
 
-  signup(user_to_login) {
+  signup(user_to_login): Observable<any> {
     let json = JSON.stringify(user_to_login);
     let params = "json=" + json;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -22,7 +22,7 @@ export class LoginService {
     return this._http.post(this.url + "api/login", params, {headers});
   }
 
-  getIdentity() {
+  getIdentity(): Observable<any> {
     let identity = JSON.parse(localStorage.getItem('identity'));
 
     if (identity != "undefined") {
@@ -34,7 +34,7 @@ export class LoginService {
     return this.identity;
   }
 
-  getToken() {
+  getToken(): Observable<any> {
     let token = localStorage.getItem('token');
 
     if (token != "undefined") {

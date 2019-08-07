@@ -53,6 +53,7 @@
         public function checkToken($jwt, $getIdentity = false)
         {
             $auth = false;
+            $decode = "";
 
             try {
                 $decode = JWT::decode($jwt, env('APP_KEY'), array('HS256'));
