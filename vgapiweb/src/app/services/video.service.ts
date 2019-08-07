@@ -28,4 +28,10 @@ export class VideoService {
     return this._http.post(this.url + "api/videos", params, {headers});
   }
 
+  deleteVideos(token, id): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('authorization', token);
+
+    return this._http.delete(this.url + "api/videos/" + id, {headers});
+  }
+
 }

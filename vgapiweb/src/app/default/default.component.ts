@@ -37,6 +37,26 @@ export class DefaultComponent implements OnInit {
     this.getAllVideos();
   }
 
+  deleteVideo(id) {
+    this.loading = "show";
+    let token = this._loginService.getToken();
+    this._videoService.deleteVideos(token, id).subscribe(
+      response => {
+        this._router.navigate['default'];
+        this.loading = 'hide';
+        this.getAllVideos();
+      },
+      error => {
+        this.errorMessage = <any>error;
+
+        if (this.errorMessage != null) {
+          console.log(this.errorMessage);
+          alert("Error en la petición");
+        }
+      }
+    );
+  }
+
   getAllVideos() {
     this._route.params.subscribe(params => {
 

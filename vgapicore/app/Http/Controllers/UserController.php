@@ -7,8 +7,19 @@
     use App\User;
     use App\Helpers\JwtAuth;
 
+    /**
+     * Class UserController
+     *
+     * @package App\Http\Controllers
+     * Created by Dynamics365 ®.
+     * User: Gilberto Guerrero Quinayas
+     */
     class UserController extends Controller
     {
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function register(Request $request)
         {
             $json = $request->input('json', null);
@@ -59,6 +70,10 @@
             return response()->json($data, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function login(Request $request)
         {
             $jwtAuth = new JwtAuth();
@@ -91,6 +106,10 @@
             return response()->json($signup, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function edit(Request $request)
         {
             $json = $request->input('json', null);

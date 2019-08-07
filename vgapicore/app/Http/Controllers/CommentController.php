@@ -7,8 +7,19 @@
     use Illuminate\Http\Request;
     use App\Comment;
 
+    /**
+     * Class CommentController
+     *
+     * @package App\Http\Controllers
+     * Created by Dynamics365 ®.
+     * User: Gilberto Guerrero Quinayas
+     */
     class CommentController extends Controller
     {
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function index(Request $request)
         {
             $comments = Comment::all();
@@ -37,6 +48,10 @@
             return response()->json($data, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function store(Request $request)
         {
             $hash = $request->header('Authorization', null);

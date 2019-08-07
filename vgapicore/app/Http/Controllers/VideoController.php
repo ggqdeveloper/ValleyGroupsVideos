@@ -7,8 +7,19 @@
     use App\Helpers\JwtAuth;
     use App\Video;
 
+    /**
+     * Class VideoController
+     *
+     * @package App\Http\Controllers
+     * Created by Dynamics365 ®.
+     * User: Gilberto Guerrero Quinayas
+     */
     class VideoController extends Controller
     {
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function index(Request $request)
         {
             $videos = Video::all();
@@ -41,11 +52,18 @@
             return response()->json($data, 200);
         }
 
+        /**
+         * @return string
+         */
         public function getDateFormat()
         {
             return 'Y-m-d H:i:s.u';
         }
 
+        /**
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
+         */
         public function store(Request $request)
         {
             $hash = $request->input('authorization', null);
@@ -86,6 +104,36 @@
                         'message' => 'El video no pudo ser creado'
                     );
                 }
+
+            } else {
+                $data = array(
+                    'status' => 'error',
+                    'code' => 400,
+                    'message' => 'Usuario no autenticado'
+                );
+            }
+
+            return response()->json($data, 200);
+        }
+
+        public function destroy($id, Request $request)
+        {
+            $hash = $request->header('authorization', null);
+            $jwtAuth = new JwtAuth();
+            $checkToken = $jwtAuth->checkToken($hash, false);
+
+            if ($checkToken) {
+
+                $video = Video::find($id);
+
+                $video->delete();
+
+                $data = array(
+                    'data' => $video,
+                    'status' => 'success',
+                    'code' => 200,
+                    'message' => 'Video eliminado'
+                );
 
             } else {
                 $data = array(
