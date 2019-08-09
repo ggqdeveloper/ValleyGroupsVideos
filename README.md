@@ -3,6 +3,10 @@
 ![GitHub](https://img.shields.io/github/license/ggqdeveloper/ValleyGroupsVideos?style=flat-square)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/laravel/laravel?style=flat-square)
 
+La plataforma se puede revisar en en link
+
+> http://40.71.35.139/youvideos/
+
 It is recommended that you use Composer to install the libraries.
 
 ## Configuration
