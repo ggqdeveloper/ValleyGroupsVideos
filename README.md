@@ -7,6 +7,9 @@ La plataforma se puede revisar en en link
 
 > http://40.71.35.139/youvideos/
 
+User = ADMIN@MAIL.COM
+Pass = ADMIN
+
 It is recommended that you use Composer to install the libraries.
 
 ## Configuration
